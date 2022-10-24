@@ -1,0 +1,51 @@
+<section class="current-product" *ngIf="activeTarif; else status">
+  <!--<h2 class="current-product__title">Мой тариф</h2>-->
+  <div class="current-product__wrapper">
+  <mat-card >
+    <mat-card-subtitle>Текущий тариф</mat-card-subtitle>
+    <mat-card-title>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="update_outline"
+        fontIcon="update_outline"
+      ></mat-icon>
+      {{ activeTarif.message_limit === 0 ? "Безлимитный" : activeTarif.message_limit }}
+    </mat-card-title>
+    <mat-card-content class="current-product__content">
+      <p>Статус: <mat-icon
+        [ngStyle]="{color: 'green', verticalAlign: 'bottom', display: getStatus() ? '' : 'none'}"
+        aria-hidden="false"
+        aria-label="check_small_outline"
+        fontIcon="check_small_outline"
+      ></mat-icon><span [ngStyle]="{color: getStatus() ? 'green' : 'red'}">{{ getStatus() ? 'Активен' : 'Истек' }}</span></p>
+      <p>Лицевой счёт: 5500000014</p>
+      <div>
+        <p class="current-product_item" title="Количество доступных отправок">
+          <mat-icon
+            [ngStyle]="{verticalAlign: 'bottom'}"
+            aria-hidden="false"
+            aria-label="label_outline"
+            fontIcon="label_month_outline"
+          ></mat-icon>
+          {{ activeTarif.message_limit === 0 ? "Неограничено" : activeTarif.message_limit }}
+        </p>
+        <p class="current-product_item" title="Дата окончания действия тарифа">
+          <mat-icon
+            [ngStyle]="{verticalAlign: 'bottom'}"
+            aria-hidden="false"
+            aria-label="calendar_month_outline"
+            fontIcon="calendar_month__outline"
+          ></mat-icon>
+          {{ activeTarif.end_date | date : 'dd.MM.yyyy' }}
+        </p>
+      </div>
+    </mat-card-content>
+    </mat-card>
+</div> 
+</section>
+
+
+<ng-template #status>
+      <p class="status">{{ statusString }}</p>
+      <hr class="line">
+</ng-template>

@@ -1,0 +1,30 @@
+
+    <form [formGroup]="authForm" (ngSubmit)="submit()" >
+     <div class="auth__form">
+      <h2>Авторизация</h2>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Введите имя пользователя</mat-label>
+                <input autocomplete="username" matInput placeholder="Логин" formControlName="login">
+                <mat-error *ngIf="">
+                  Некорректный email
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Введите пароль</mat-label>
+                <input type="password" autocomplete="current-password" matInput placeholder="Пароль" formControlName="password">
+              <mat-error *ngIf="password?.touched && password?.invalid">
+                <p *ngIf="password?.errors?.['required']">Введите пароль</p>
+                <p *ngIf="password?.errors?.['minlength']">Пароль долже быть не меньше {{ password?.errors?.['minlength']?.requiredLength }} символов</p>
+              </mat-error>
+            </mat-form-field>
+        </div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="authForm.invalid || submitted">Войти</button>
+         <mat-error >
+              <small *ngIf="message">Неверное имя пользователя или пароль</small>
+         </mat-error> 
+         <a routerLink="/registration">Зарегистрироваться?</a>
+      </div>
+    </form>

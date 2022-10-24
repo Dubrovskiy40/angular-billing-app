@@ -1,0 +1,10 @@
+<section class="products" *ngIf="products; else status">
+  <h2 class="products__title">Список пакетов</h2>
+  <ul class="products__list">
+    <app-product *ngFor="let product of products; let i = index" [product]="product"></app-product>
+  </ul>
+</section>
+
+<ng-template #status>
+  <p class="status">{{ statusString }}</p>
+</ng-template>

@@ -1,0 +1,32 @@
+<nav class="navbar">
+  <ul class="navbar__menu-left">
+    <li>
+      <a routerLinkActive="active" [routerLink]="['/home', 'history']">История приобретений</a>
+    </li>
+    <li>
+      <a routerLinkActive="active" [routerLink]="['/home', 'price']">Список тарифов</a>
+    </li>
+  </ul>
+  <div class="navbar__menu-right">
+    <div class="menu-righ__account" *ngIf="user; else loading">
+      <mat-icon>account_circle</mat-icon>
+      <p>{{ user.username }}</p>
+    </div>
+    <mat-icon (click)="logout()">logout</mat-icon>
+  </div>
+
+</nav>
+<h2 class="product__title">Мой тариф</h2>
+<div [ngStyle]="{display: 'flex', flexWrap: 'wrap'}">
+  <app-active-tariff [ngStyle]="{flexGrow: '1', margin: '0 5px 0 10px'}"></app-active-tariff>
+  <app-status [ngStyle]="{flexGrow: '1',  margin: '0 10px 0 5px'}"></app-status>
+</div>
+<router-outlet></router-outlet>
+<app-alert></app-alert>
+
+<ng-template #loading>
+  <div class="menu-righ__account">
+    <mat-icon>account_circle</mat-icon>
+    <p>Ща загрузим</p>
+  </div>
+</ng-template>

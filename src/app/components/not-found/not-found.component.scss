@@ -1,0 +1,17 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+
+  &__text {
+    padding: 30px;
+    background-color: #3F51B5;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 40vh;
+    color : #fff;
+  }
+
+  &__link {
+    color: red;
+  }
+}

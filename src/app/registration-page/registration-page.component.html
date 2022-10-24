@@ -1,0 +1,40 @@
+<form [formGroup]="registrationForm" (ngSubmit)="submit()">
+    <div class="registration_form">
+        <h2>Регистрация</h2>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Введите email</mat-label>
+                <input autocomplete="email" matInput placeholder="Email" formControlName="email">
+                <mat-error *ngIf="email?.invalid && email?.touched">
+                  Некорректный email
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Придумайте имя пользователя</mat-label>
+                <input autocomplete="username" matInput placeholder="Имя пользователя" formControlName="userName">
+                <mat-error *ngIf="userName?.invalid">
+                  Имя пользователя дожно содержать минимум 4 символа
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Придумайте пароль</mat-label>
+                <input autocomplete="new-password" matInput placeholder="Пароль" formControlName="password">
+                <mat-error *ngIf="password?.touched && password?.invalid">
+                    <p *ngIf="password?.errors?.['required']">Введите пароль</p>
+                    <p *ngIf="password?.errors?.['minlength']">Пароль долже быть не меньше {{ password?.errors?.['minlength']?.requiredLength }} символов</p>
+                    <p *ngIf="password?.errors?.['pattern']" >Пароль должен содержать миниму одну заглавную букву и одну цифру</p>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid || submitted">Подтвердить</button>
+        <mat-error >
+          <small *ngIf="message">{{ message }}</small>
+        </mat-error> 
+        <a routerLink="/auth">Назад</a>
+
+    </div>
+</form>

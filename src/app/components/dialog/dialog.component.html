@@ -1,0 +1,17 @@
+<div class="dialog__top" color="primary">
+  <h1>Приобретение пакета отправок</h1>
+  <span class="dialog__close" mat-dialog-close >&times;</span>
+</div>
+<div mat-dialog-content>
+  Вы действительно хотите приобрести пакет: {{data.title}}?
+</div>
+<div mat-dialog-content>
+  <p>Тип: {{data.title}}</p>
+  <p>Количество отправок: {{data.message_limit === 0 ? 'Безлимитный' : data.message_limit}}</p>
+  <p>Период действия: {{data.period}} месяцев</p>
+  <p>Стоимость: {{data.price}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" mat-dialog-close>Нет</button>
+  <button mat-raised-button color="primary" (click)="buyProduct()">Да</button>
+</div>

@@ -1,0 +1,26 @@
+<div class = "status_page">
+
+    <div class = "status_info">
+        <h3 class = "status_lastOrder">Последний заказ: {{ lastOrderTitle }} от: {{ lastOrderDate | date: 'dd.MM.YYYY'}}</h3>
+        <h3 classw = "status_activeOrder">Всего активных заказов: {{ ordersCount }}</h3>
+    </div>
+
+    <div class = "status_order">
+        <div class="status_order_content">
+            <div class="status_order_statusTitle">
+                <mat-icon class="status_order_icon">edit</mat-icon>
+                <h4 class="status_order_title">Заказ создан</h4>
+                <hr class="status_order_line">
+            </div>
+            <p class="status_order_subtitle_left">Создан счет на оплату</p>
+        </div>
+        <div class="status_order_content">
+            <div class="status_order_statusTitle">
+                <hr class="status_order_line">
+                <mat-icon class="status_order_icon">check</mat-icon>
+                <h4 class="status_order_title">Выполнен</h4>
+            </div>
+            <p class="status_order_subtitle_right">Заказ успешно выполнен</p>
+        </div>
+    </div>
+</div>
